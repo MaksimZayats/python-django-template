@@ -1,0 +1,10 @@
+-r requirements.txt
+black==23.12.1
+mypy==1.8.0
+pip-check-updates==0.23.0
+pre-commit==3.6.0
+pytest==7.4.4
+pytest-cov==4.1.0
+pytest-django==4.7.0
+ruff==0.1.9
+ruff-lsp==0.0.48
