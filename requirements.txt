@@ -5,6 +5,7 @@ celery-types==0.20.0
 colorlog==6.8.0
 dj_database_url==2.1.0
 Django==5.0
+django-axes[ipware]==6.3.0
 django-cors-headers==4.3.1
 django-silk==5.0.4
 django-split-settings==1.2.0

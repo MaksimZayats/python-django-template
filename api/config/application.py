@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
+    "axes",
     "silk",
     "rest_framework",
     "drf_spectacular",
@@ -34,6 +35,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     SILKY_MIDDLEWARE_CLASS,
+    "axes.middleware.AxesMiddleware",
 ]
 
 if not USE_SILK:

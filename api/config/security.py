@@ -18,6 +18,11 @@ ALLOWED_HOSTS = [
     host.strip() for host in getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 ]
 
+AUTHENTICATION_BACKENDS = [
+    "axes.backends.AxesStandaloneBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
 CSRF_TRUSTED_ORIGINS = [
     host.strip() for host in getenv("CSRF_TRUSTED_ORIGINS", "http://localhost").split(",")
 ]

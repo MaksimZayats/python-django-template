@@ -16,4 +16,5 @@ include(
     "spectacular.py",
     "celery.py",
     "cache.py",
+    "axes.py",
 )
