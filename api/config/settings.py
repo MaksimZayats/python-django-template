@@ -15,4 +15,5 @@ include(
     "silk.py",
     "spectacular.py",
     "celery.py",
+    "cache.py",
 )
