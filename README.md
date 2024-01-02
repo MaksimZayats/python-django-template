@@ -30,6 +30,8 @@ This Django API Template is designed to be robust, scalable, and secure, with fe
 
 - **[Django Silk for Profiling](https://pypi.org/project/django-silk/)**: Utilize Django Silk for profiling and monitoring Django applications, offering insights into performance and optimization.
 
+- **[Django Axes for Security](https://django-axes.readthedocs.io/)**: Use Django Axes for security, with support for blocking brute force attacks and monitoring login attempts.
+
 - **[AWS S3 Integration](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html)**: Option to use Amazon S3 for static and media file storage, enhancing scalability and performance.
 
 - **Scalability Options**: Configure workers and threads to optimize performance under different load conditions.
