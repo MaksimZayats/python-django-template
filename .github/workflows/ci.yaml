@@ -6,13 +6,16 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
   check-code:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        python-version: [ '3.10', '3.11', '3.12' ]
+        python-version: [ '3.12' ]
         os: [ ubuntu-latest, macos-latest ]
 
     steps:
@@ -33,3 +36,15 @@ jobs:
 
       - name: Run tests
         run: make test
+
+  dependabot-auto-merge:
+    name: 'Dependabot auto merge'
+    needs: [ check-code ]
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}  # Detect that the PR author is dependabot
+    steps:
+      - name: Enable auto-merge for Dependabot PRs
+        run: gh pr merge --auto --merge "$PR_URL"  # Use GitHub CLI to merge automatically the PR
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
