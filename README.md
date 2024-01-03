@@ -36,6 +36,8 @@ This Django API Template is designed to be robust, scalable, and secure, with fe
 
 - **Scalability Options**: Configure workers and threads to optimize performance under different load conditions.
 
+- **Up-to-Date Dependencies**: All dependencies are up-to-date as of the latest release. Thanks to [Dependabot](https://dependabot.com/).
+
 ---
 
 ## Configuration Guide
