@@ -1,5 +1,4 @@
-run.bot:
-	python -m bot
+include .env
 
 run.server.local:
 	sh ./run-local.sh
