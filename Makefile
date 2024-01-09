@@ -1,4 +1,8 @@
-include .env
+# include `.env` file if exists
+ifneq ("$(wildcard .env)","")
+	include .env
+	export
+endif
 
 run.server.local:
 	sh ./run-local.sh
