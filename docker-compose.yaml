@@ -1,7 +1,21 @@
 version: '3.9'
 
+x-common: &common
+  env_file:
+    - .env
+
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+  networks:
+    - main
+
 services:
   api:
+    <<: *common
     build: .
     environment:
       WORKERS: ${WORKERS:-2}
@@ -18,22 +32,18 @@ services:
     restart: always
     volumes:
       - .:/application
-    networks:
-      - main
 
   db:
+    <<: *common
     image: postgres:latest
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
       POSTGRES_INITDB_ARGS: --auth=md5
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    networks:
-      - main
 
   pgbouncer:
+    <<: *common
     image: edoburu/pgbouncer:latest
     restart: unless-stopped
     depends_on:
@@ -55,18 +65,16 @@ services:
       - AUTH_TYPE=md5
     volumes:
       - pgbouncer-data:/var/lib/pgbouncer
-    networks:
-      - main
 
   redis:
+    <<: *common
     image: redis:latest
     restart: unless-stopped
     volumes:
       - redis-data:/data
-    networks:
-      - main
 
   rabbitmq:
+    <<: *common
     image: rabbitmq:3-management
     restart: unless-stopped
     environment:
@@ -76,10 +84,9 @@ services:
       - rabbitmq-data:/var/lib/rabbitmq
     ports:
       - "${RABBITMQ_DASHBOARD_PORT:-15672}:15672"
-    networks:
-      - main
 
   celery:
+    <<: *common
     build: .
     command: make run.celery.prod
     restart: unless-stopped
@@ -87,28 +94,24 @@ services:
       - api
     volumes:
       - .:/application
-    networks:
-      - main
 
   migrations:
+    <<: *common
     build: .
     command: make migrate
     depends_on:
       - db
     volumes:
       - .:/application
-    networks:
-      - main
 
   collectstatic:
+    <<: *common
     build: .
     command: make collectstatic
     depends_on:
       - db
     volumes:
       - .:/application
-    networks:
-      - main
 
 networks:
   main:

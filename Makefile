@@ -56,3 +56,24 @@ test:
 
 mypy:
 	python -m mypy .
+
+# Docker
+logs:
+	docker compose logs -f --tail=100
+
+logs.errors:
+	docker compose logs -f --tail=100 | grep -E 'ERROR|WARNING|EXCEPTION|CRITICAL|FATAL|TRACEBACK'
+
+db.dump.all:
+	@mkdir -p backups
+	$(eval BACKUP_PATH := backups/dump_$(shell date +%Y-%m-%d-%H-%M-%S).sql)
+	@docker exec -e PGPASSWORD=${POSTGRES_PASSWORD} ${COMPOSE_PROJECT_NAME}-db-1 pg_dumpall -c -U ${POSTGRES_USER} > ${BACKUP_PATH}
+	@echo "Database dumped to '${BACKUP_PATH}'"
+
+db.restore:
+    ifndef BACKUP_PATH
+    	$(error `BACKUP_PATH` is not set. Use `make db.restore BACKUP_PATH=...`)
+    endif
+
+	@docker exec -i -e PGPASSWORD=${POSTGRES_PASSWORD} ${COMPOSE_PROJECT_NAME}-db-1 psql -U ${POSTGRES_USER} < ${BACKUP_PATH}
+	@echo "Database restored from '${BACKUP_PATH}'"
