@@ -71,9 +71,7 @@ db.dump.all:
 	@echo "Database dumped to '${BACKUP_PATH}'"
 
 db.restore:
-    ifndef BACKUP_PATH
-    	$(error `BACKUP_PATH` is not set. Use `make db.restore BACKUP_PATH=...`)
-    endif
+	@test -n "$(BACKUP_PATH)" || (echo '`BACKUP_PATH` is not set. Use `make db.restore BACKUP_PATH=<path>`' && exit 1)
 
 	@docker exec -i -e PGPASSWORD=${POSTGRES_PASSWORD} ${COMPOSE_PROJECT_NAME}-db-1 psql -U ${POSTGRES_USER} < ${BACKUP_PATH}
 	@echo "Database restored from '${BACKUP_PATH}'"
