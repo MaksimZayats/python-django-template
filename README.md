@@ -86,7 +86,12 @@ By following this guide and utilizing the advanced features, you'll be able to s
 #### 1. Repository Initialization
    - **Clone the Repository**
 
-#### 2. Configuration
+#### 2. Install the project dependencies:
+   ```bash
+   uv sync --all-extras --dev
+   ```
+
+#### 3. Configuration
    - **Environment Variables**:
      - Copy the example environment file:
        ```bash
@@ -94,13 +99,13 @@ By following this guide and utilizing the advanced features, you'll be able to s
        ```
      - _Note: The API can operate without this step, but configuring the environment variables is recommended for full functionality._
 
-#### 3. Database Setup
+#### 4. Database Setup
    - **Run Migrations**:
      ```bash
      make migrate
      ```
 
-#### 4. Launching the Server
+#### 5. Launching the Server
    - **Start the Local Server**:
      ```bash
      make run.server.local
