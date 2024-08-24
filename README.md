@@ -79,20 +79,14 @@ By following this guide and utilizing the advanced features, you'll be able to s
 
 ### Setting Up Locally
 
+#### Prerequisites
+
+- **uv**: Install `uv` using by following the instructions in the [official documentation](https://github.com/astral-sh/uv?tab=readme-ov-file#installation).
+
 #### 1. Repository Initialization
    - **Clone the Repository**
 
-#### 2. Environment Setup
-   - **Create a Virtual Environment**:
-     ```bash
-     python3.12 -m venv .venv
-     ```
-   - **Activate the Virtual Environment**:
-     ```bash
-     source .venv/bin/activate
-     ```
-
-#### 3. Configuration
+#### 2. Configuration
    - **Environment Variables**:
      - Copy the example environment file:
        ```bash
@@ -100,19 +94,13 @@ By following this guide and utilizing the advanced features, you'll be able to s
        ```
      - _Note: The API can operate without this step, but configuring the environment variables is recommended for full functionality._
 
-#### 4. Dependency Management
-   - **Install Dependencies**:
-     ```bash
-     pip install -r requirements-dev.txt
-     ```
-
-#### 5. Database Setup
+#### 3. Database Setup
    - **Run Migrations**:
      ```bash
      make migrate
      ```
 
-#### 6. Launching the Server
+#### 4. Launching the Server
    - **Start the Local Server**:
      ```bash
      make run.server.local

@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Any, Callable, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from django.urls import URLResolver, path
 from rest_framework.routers import SimpleRouter
 from rest_framework.viewsets import GenericViewSet, ViewSet
+
+if TYPE_CHECKING:
+    from collections.abc import Callable
 
 T = TypeVar("T", bound=Any)
 
@@ -30,7 +33,7 @@ class CustomViewRouter:
         route = f"{self.url_prefix}{route}"
 
         def decorator(view: T) -> T:
-            if issubclass(view, (ViewSet, GenericViewSet)):
+            if issubclass(view, ViewSet | GenericViewSet):
                 kwargs.setdefault("basename", basename or name)
                 self._drf_router.register(route, view, **kwargs)
             else:

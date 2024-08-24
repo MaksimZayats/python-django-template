@@ -8,54 +8,54 @@ run.server.local:
 	sh ./run-local.sh
 
 run.server.prod:
-	python -m gunicorn api.web.wsgi:application \
+	uv run gunicorn api.web.wsgi:application \
 		--bind 0.0.0.0:80 \
 		--workers ${WORKERS} \
 		--threads ${THREADS} \
 		--timeout 480
 
 run.celery.local:
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES celery -A tasks.app worker --loglevel=DEBUG
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run celery -A tasks.app worker --loglevel=DEBUG
 
 run.celery.prod:
-	celery -A tasks.app worker --loglevel=INFO
+	uv run celery -A tasks.app worker --loglevel=INFO
 
 makemigrations:
-	python manage.py makemigrations
+	uv run manage.py makemigrations
 
 migrate:
-	python manage.py migrate
+	uv run manage.py migrate
 
 collectstatic:
-	python manage.py collectstatic --no-input
+	uv run collectstatic --no-input
 
 createsuperuser:
-	python manage.py createsuperuser --email "" --username admin
+	uv run createsuperuser --email "" --username admin
 
 # Tests, linters & formatters
-fmt:
-	make -k ruff-fmt black
+format:
+	make -k ruff-format ruff-fix
+
+ruff-format:
+	uv run ruff format .
+
+ruff-fix:
+	uv run  ruff check --fix-only .
+
+ruff-unsafe-fixes:
+	uv run ruff check --fix-only --unsafe-fixes .
 
 lint:
-	make -k ruff black-check mypy
+	make -k ruff-check mypy
 
-black:
-	python -m black .
-
-black-check:
-	python -m black --check .
-
-ruff:
-	python -m ruff .
-
-ruff-fmt:
-	python -m ruff --fix-only --unsafe-fixes .
+ruff-check:
+	uv run ruff check .
 
 test:
-	python -m pytest
+	uv run pytest
 
 mypy:
-	python -m mypy .
+	uv run mypy .
 
 # Docker
 logs:

@@ -1,8 +1,10 @@
 FROM python:3.12
 
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:0.3.3 /uv /bin/uv
+
 WORKDIR /application
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
 COPY . .
+
+RUN uv sync --frozen

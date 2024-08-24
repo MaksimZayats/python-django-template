@@ -1,5 +1,5 @@
 while true; do
-    python manage.py runserver
+    uv run manage.py runserver
 
     # Check the exit status of the command
     if [ $? -eq 0 ]; then
