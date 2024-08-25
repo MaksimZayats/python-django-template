@@ -1,5 +1,3 @@
-version: '3.9'
-
 x-common: &common
   env_file:
     - .env
@@ -75,7 +73,7 @@ services:
 
   rabbitmq:
     <<: *common
-    image: rabbitmq:3-management
+    image: rabbitmq:3.13-management
     restart: unless-stopped
     environment:
         RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-guest}
