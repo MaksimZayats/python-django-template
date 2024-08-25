@@ -81,7 +81,7 @@ By following this guide and utilizing the advanced features, you'll be able to s
 
 #### Prerequisites
 
-- **uv**: Install `uv` using by following the instructions in the [official documentation](https://github.com/astral-sh/uv?tab=readme-ov-file#installation).
+- **uv**: Install `uv` by following the instructions in the [official documentation](https://github.com/astral-sh/uv?tab=readme-ov-file#installation).
 
 #### 1. Repository Initialization
    - **Clone the Repository**
