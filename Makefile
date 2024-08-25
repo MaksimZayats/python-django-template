@@ -40,7 +40,7 @@ ruff-format:
 	uv run ruff format .
 
 ruff-fix:
-	uv run  ruff check --fix-only .
+	uv run ruff check --fix-only .
 
 ruff-unsafe-fixes:
 	uv run ruff check --fix-only --unsafe-fixes .

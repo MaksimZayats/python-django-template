@@ -86,7 +86,7 @@ By following this guide and utilizing the advanced features, you'll be able to s
 #### 1. Repository Initialization
    - **Clone the Repository**
 
-#### 2. Install the project dependencies:
+#### 2. Install the project dependencies
    ```bash
    uv sync --all-extras --dev
    ```
