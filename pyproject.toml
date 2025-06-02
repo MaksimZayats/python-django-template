@@ -6,7 +6,7 @@ requires-python = ">=3.12"
 dependencies = [
     "boto3==1.38.27",
     "cachetools==6.0.0",
-    "celery==5.5.2",
+    "celery==5.5.3",
     "celery-types==0.23.0",
     "colorlog==6.9.0",
     "dj_database_url==2.3.0",
