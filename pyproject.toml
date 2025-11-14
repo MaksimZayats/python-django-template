@@ -5,7 +5,7 @@ description = "Python Django Template"
 requires-python = ">=3.12"
 dependencies = [
     "boto3==1.40.72",
-    "cachetools==6.2.1",
+    "cachetools==6.2.2",
     "celery==5.5.3",
     "celery-types==0.23.0",
     "colorlog==6.10.1",
