@@ -26,7 +26,7 @@ dependencies = [
     "python-dotenv==1.2.1",
     "pytz==2025.2",
     "redis==7.1.0",
-    "sentry-sdk==2.46.0",
+    "sentry-sdk==2.47.0",
 ]
 
 [tool.uv]
