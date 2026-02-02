@@ -20,7 +20,7 @@ dependencies = [
     "djangorestframework==3.16.1",
     "djangorestframework_simplejwt==5.5.1",
     "drf-spectacular==0.29.0",
-    "gunicorn==24.0.0",
+    "gunicorn==25.0.1",
     "psycopg==3.3.2",
     "pyjwt==2.10.1",
     "python-dotenv==1.2.1",
