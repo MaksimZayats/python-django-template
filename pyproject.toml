@@ -21,7 +21,7 @@ dependencies = [
     "djangorestframework_simplejwt==5.5.1",
     "drf-spectacular==0.29.0",
     "gunicorn==25.0.3",
-    "psycopg==3.3.2",
+    "psycopg==3.3.3",
     "pyjwt==2.11.0",
     "python-dotenv==1.2.1",
     "pytz==2025.2",
