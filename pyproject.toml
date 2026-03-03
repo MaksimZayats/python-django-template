@@ -24,7 +24,7 @@ dependencies = [
     "psycopg==3.3.3",
     "pyjwt==2.11.0",
     "python-dotenv==1.2.2",
-    "pytz==2025.2",
+    "pytz==2026.1.post1",
     "redis==7.2.1",
     "sentry-sdk==2.53.0",
 ]
