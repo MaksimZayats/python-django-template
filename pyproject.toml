@@ -10,7 +10,7 @@ dependencies = [
     "celery-types==0.24.0",
     "colorlog==6.10.1",
     "dj_database_url==3.1.2",
-    "Django==6.0.2",
+    "Django==6.0.3",
     "django-axes[ipware]==8.3.1",
     "django-cors-headers==4.9.0",
     "django-silk==5.4.3",
